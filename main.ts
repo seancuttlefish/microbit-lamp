@@ -3,21 +3,21 @@ input.onButtonPressed(Button.A, function () {
     if (hue > 360) {
         hue = 0
     }
-    radio.sendValue("hue", hue)
+    radio.sendValue("h", hue)
 })
 input.onButtonPressed(Button.B, function () {
     luminosity += 10
     if (luminosity > 50) {
         luminosity = 0
     }
-    radio.sendValue("lum", luminosity)
+    radio.sendValue("l", luminosity)
 })
 radio.onReceivedValue(function (name, value) {
-    if (name == "hue") {
+    if (name == "h") {
         hue = value
-    } else if (name == "sat") {
+    } else if (name == "s") {
         saturation = value
-    } else if (name == "lum") {
+    } else if (name == "l") {
         luminosity = value
     }
 })
