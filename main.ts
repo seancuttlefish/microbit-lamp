@@ -1,8 +1,3 @@
-/**
- * This script will control a string of Neopixels connected to Pin 1 on a BBC Microbit. Button A will change colour and Button B will change brightness 9from off to full brightness).
- * 
- * It will also transmit and receive hue, saturation and luminosity value, allowing a second Microbit to be used as a controller, or multiple lamps to synchronise with each other.
- */
 input.onButtonPressed(Button.A, function () {
     hue += 30
     if (hue > 360) {
