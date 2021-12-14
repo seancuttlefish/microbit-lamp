@@ -18,6 +18,9 @@ radio.onReceivedValue(function (name, value) {
     if (name == "hue") {
         hue = value
     }
+    if (name == "saturation") {
+        saturation = value
+    }
     if (name == "luminosity") {
         luminosity = value
     }
@@ -32,4 +35,5 @@ hue = 0
 saturation = 99
 luminosity = 50
 strip = neopixel.create(DigitalPin.P1, 30, NeoPixelMode.RGB)
+strip.showColor(neopixel.hsl(hue, saturation, luminosity))
 basic.showIcon(IconNames.Heart)
