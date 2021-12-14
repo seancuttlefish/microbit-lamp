@@ -3,7 +3,7 @@ This Makeblock project controls a string of Neopixels connected to Pin 1 on a BB
 
 It also transmits and receives hue, saturation and luminosity values, allowing a second Microbit to be used as a controller for a lamp, or multiple lamps to synchronise with one another.
 
-## Edit this on MakeCode ![Build status badge](https://github.com/seancuttlefish/microbit-lamp/workflows/MakeCode/badge.svg)
+## Edit this on MakeCode
 
 To edit this repository in MakeCode.
 
