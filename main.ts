@@ -16,16 +16,10 @@ input.onButtonPressed(Button.B, function () {
 })
 radio.onReceivedValue(function (name, value) {
     if (name == "hue") {
-        hue += 30
-        if (hue > 360) {
-            hue = 0
-        }
+        hue = value
     }
     if (name == "luminosity") {
-        luminosity += 10
-        if (luminosity > 50) {
-            luminosity = 0
-        }
+        luminosity = value
     }
     strip.showColor(neopixel.hsl(hue, saturation, luminosity))
 })
