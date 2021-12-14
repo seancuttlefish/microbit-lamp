@@ -10,16 +10,14 @@ input.onButtonPressed(Button.B, function () {
     if (luminosity > 50) {
         luminosity = 0
     }
-    radio.sendValue("luminosity", luminosity)
+    radio.sendValue("lum", luminosity)
 })
 radio.onReceivedValue(function (name, value) {
     if (name == "hue") {
         hue = value
-    }
-    if (name == "saturation") {
+    } else if (name == "sat") {
         saturation = value
-    }
-    if (name == "luminosity") {
+    } else if (name == "lum") {
         luminosity = value
     }
 })
