@@ -1,5 +1,7 @@
 
-> Open this page at [https://seancuttlefish.github.io/microbit-lamp/](https://seancuttlefish.github.io/microbit-lamp/)
+This script controls a string of Neopixels connected to Pin 1 on a BBC Microbit. Button A changes colour and Button B changes brightness (from off to full brightness).
+
+It also transmits and receives hue, saturation and luminosity values, allowing a second Microbit to be used as a controller for a lamp, or multiple lamps to synchronise with each other.
 
 ## Edit this project ![Build status badge](https://github.com/seancuttlefish/microbit-lamp/workflows/MakeCode/badge.svg)
 
@@ -15,8 +17,3 @@ This image shows the blocks code from the last commit in master.
 This image may take a few minutes to refresh.
 
 ![A rendered view of the blocks](https://github.com/seancuttlefish/microbit-lamp/raw/master/.github/makecode/blocks.png)
-
-#### Metadata (used for search, rendering)
-
-* for PXT/microbit
-<script src="https://makecode.com/gh-pages-embed.js"></script><script>makeCodeRender("{{ site.makecode.home_url }}", "{{ site.github.owner_name }}/{{ site.github.repository_name }}");</script>
