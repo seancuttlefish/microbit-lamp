@@ -1,9 +1,9 @@
 
-This script controls a string of Neopixels connected to Pin 1 on a BBC Microbit. Button A changes colour (in 12 steps around the colour wheel) and Button B changes brightness (from off to full brightness in 5 steps).
+This Makeblock project controls a string of Neopixels connected to Pin 1 on a BBC Microbit. Button A changes colour (in 12 steps around the colour wheel) and Button B changes brightness (from off to full brightness in 5 steps).
 
 It also transmits and receives hue, saturation and luminosity values, allowing a second Microbit to be used as a controller for a lamp, or multiple lamps to synchronise with one another.
 
-## Edit this project ![Build status badge](https://github.com/seancuttlefish/microbit-lamp/workflows/MakeCode/badge.svg)
+## Edit this on MakeCode ![Build status badge](https://github.com/seancuttlefish/microbit-lamp/workflows/MakeCode/badge.svg)
 
 To edit this repository in MakeCode.
 
