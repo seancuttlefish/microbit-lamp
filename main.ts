@@ -6,6 +6,8 @@ input.onButtonPressed(Button.A, function () {
         }
         radio.sendValue("h", hue)
         state = 1
+    } else if (mode == 1) {
+    	
     }
 })
 input.onSound(DetectedSound.Loud, function () {
@@ -31,10 +33,12 @@ input.onButtonPressed(Button.B, function () {
         }
         radio.sendValue("l", luminosity)
         state = 1
+    } else if (mode == 1) {
+    	
     }
 })
 radio.onReceivedValue(function (name, value) {
-    if (name == "h") {
+    if (name == value) {
         hue = value
     } else if (name == "s") {
         saturation = value
