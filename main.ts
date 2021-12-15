@@ -11,15 +11,15 @@
  * 
  * Mode 1 (Light)
  * 
- * - Automatically come after light falls below a level.
+ * - Automatically come after light falls below a cirtain level.
  * 
- * - Press A to reduce light sensitivity.
+ * - Press A to reduce light sensitivity level.
  * 
- * - Press B to increase  light sensitivity.
+ * - Press B to increase  light sensitivity level.
  * 
  * Mode 2 (Sound) - V2 Only
  * 
- * - Simple sound to light.
+ * - A simple sound to light.
  */
 input.onButtonPressed(Button.A, function () {
     if (mode == 0) {
