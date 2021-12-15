@@ -11,7 +11,7 @@
  * 
  * Mode 1 (Light)
  * 
- * - Automatically come after light falls below a cirtain level.
+ * - Automatically come on after light falls below a cirtain level.
  * 
  * - Press A to reduce light sensitivity level.
  * 
@@ -19,7 +19,7 @@
  * 
  * Mode 2 (Sound) - V2 Only
  * 
- * - A simple sound to light.
+ * - A simple sound to light generator.
  */
 input.onButtonPressed(Button.A, function () {
     if (mode == 0) {
@@ -92,7 +92,7 @@ basic.forever(function () {
             basic.showIcon(IconNames.SmallHeart)
         }
     } else if (mode == 1) {
-        if (input.lightLevel() > trigger) {
+        if (input.lightLevel() < trigger) {
             strip.showColor(neopixel.hsl(hue, saturation, luminosity))
             basic.showIcon(IconNames.Diamond)
         } else {
