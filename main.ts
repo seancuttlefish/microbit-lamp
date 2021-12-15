@@ -7,12 +7,12 @@ input.onButtonPressed(Button.A, function () {
     updatehsl = 1
 })
 input.onSound(DetectedSound.Loud, function () {
-    if (status == 1) {
+    if (state == 1) {
         strip.showColor(neopixel.colors(NeoPixelColors.Black))
-        status = 0
+        state = 0
     } else {
         updatehsl = 1
-        status = 1
+        state = 1
     }
 })
 input.onButtonPressed(Button.B, function () {
@@ -36,7 +36,7 @@ radio.onReceivedValue(function (name, value) {
     }
 })
 let strip: neopixel.Strip = null
-let status = 0
+let state = 0
 let updatehsl = 0
 let luminosity = 0
 let saturation = 0
@@ -46,7 +46,7 @@ hue = 0
 saturation = 99
 luminosity = 50
 updatehsl = 1
-status = 1
+state = 1
 strip = neopixel.create(DigitalPin.P1, 30, NeoPixelMode.RGB)
 basic.showIcon(IconNames.Heart)
 basic.forever(function () {
