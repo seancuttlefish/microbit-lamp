@@ -38,7 +38,7 @@ input.onButtonPressed(Button.B, function () {
     }
 })
 radio.onReceivedValue(function (name, value) {
-    if (name == value) {
+    if (name == "h") {
         hue = value
     } else if (name == "s") {
         saturation = value
