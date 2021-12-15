@@ -4,7 +4,7 @@ input.onButtonPressed(Button.A, function () {
         hue = 0
     }
     radio.sendValue("h", hue)
-    updatehsl = 1
+    update = 1
 })
 input.onSound(DetectedSound.Loud, function () {
     if (state == 1) {
@@ -12,7 +12,7 @@ input.onSound(DetectedSound.Loud, function () {
         state = 0
         basic.showIcon(IconNames.SmallHeart)
     } else {
-        updatehsl = 1
+        update = 1
         state = 1
         basic.showIcon(IconNames.Heart)
     }
@@ -23,23 +23,23 @@ input.onButtonPressed(Button.B, function () {
         luminosity = 0
     }
     radio.sendValue("l", luminosity)
-    updatehsl = 1
+    update = 1
 })
 radio.onReceivedValue(function (name, value) {
     if (name == "h") {
         hue = value
-        updatehsl = 1
+        update = 1
     } else if (name == "s") {
         saturation = value
-        updatehsl = 1
+        update = 1
     } else if (name == "l") {
         luminosity = value
-        updatehsl = 1
+        update = 1
     }
 })
 let strip: neopixel.Strip = null
 let state = 0
-let updatehsl = 0
+let update = 0
 let luminosity = 0
 let saturation = 0
 let hue = 0
@@ -47,13 +47,13 @@ radio.setGroup(1)
 hue = 0
 saturation = 99
 luminosity = 50
-updatehsl = 1
+update = 1
 state = 1
 strip = neopixel.create(DigitalPin.P1, 30, NeoPixelMode.RGB)
 basic.forever(function () {
-    if (updatehsl == 1) {
+    if (update == 1) {
         strip.showColor(neopixel.hsl(hue, saturation, luminosity))
-        updatehsl = 0
+        update = 0
         basic.showIcon(IconNames.Heart)
     }
 })
