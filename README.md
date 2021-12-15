@@ -13,9 +13,9 @@ Mode 0 (Default)
 - Clap to toggle on/off.
 
 Mode 1 (Light)
-- Automatically switch on after light falls below a level.
+- Automatically switch on after light falls below a certain level.
 - Press A to reduce light sensitivity lvel.
 - Press B to increase  light sensitivity level.
 
 Mode 2 (Sound) - V2 Only
-- A simple sound to light.
+- A simple sound to light generator.
