@@ -10,9 +10,11 @@ input.onSound(DetectedSound.Loud, function () {
     if (state == 1) {
         strip.showColor(neopixel.colors(NeoPixelColors.Black))
         state = 0
+        basic.showIcon(IconNames.SmallHeart)
     } else {
         updatehsl = 1
         state = 1
+        basic.showIcon(IconNames.Heart)
     }
 })
 input.onButtonPressed(Button.B, function () {
@@ -48,10 +50,10 @@ luminosity = 50
 updatehsl = 1
 state = 1
 strip = neopixel.create(DigitalPin.P1, 30, NeoPixelMode.RGB)
-basic.showIcon(IconNames.Heart)
 basic.forever(function () {
     if (updatehsl == 1) {
         strip.showColor(neopixel.hsl(hue, saturation, luminosity))
         updatehsl = 0
+        basic.showIcon(IconNames.Heart)
     }
 })
