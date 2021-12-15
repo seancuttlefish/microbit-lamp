@@ -28,17 +28,24 @@ input.onButtonPressed(Button.A, function () {
             hue = 0
         }
         radio.sendValue("h", hue)
-        state = 1
+        toggle = 1
     } else if (mode == 1) {
-    	
+        trigger += -10
+        if (trigger < 0) {
+            trigger = 0
+        }
+        led.plotBarGraph(
+        trigger,
+        255
+        )
     }
 })
 input.onSound(DetectedSound.Loud, function () {
     if (mode == 0) {
-        if (state == 1) {
-            state = 0
+        if (toggle == 1) {
+            toggle = 0
         } else {
-            state = 1
+            toggle = 1
         }
     }
 })
@@ -55,9 +62,16 @@ input.onButtonPressed(Button.B, function () {
             luminosity = 0
         }
         radio.sendValue("l", luminosity)
-        state = 1
+        toggle = 1
     } else if (mode == 1) {
-    	
+        trigger += 10
+        if (trigger > 255) {
+            trigger = 255
+        }
+        led.plotBarGraph(
+        trigger,
+        255
+        )
     }
 })
 radio.onReceivedValue(function (name, value) {
@@ -69,7 +83,8 @@ radio.onReceivedValue(function (name, value) {
         luminosity = value
     }
 })
-let state = 0
+let trigger = 0
+let toggle = 0
 let mode = 0
 let luminosity = 0
 let saturation = 0
@@ -79,12 +94,12 @@ hue = 0
 saturation = 99
 luminosity = 50
 mode = 0
-state = 1
-let trigger = 100
+toggle = 1
+trigger = 100
 let strip = neopixel.create(DigitalPin.P1, 30, NeoPixelMode.RGB)
 basic.forever(function () {
     if (mode == 0) {
-        if (state == 1) {
+        if (toggle == 1) {
             strip.showColor(neopixel.hsl(hue, saturation, luminosity))
             basic.showIcon(IconNames.Heart)
         } else {
