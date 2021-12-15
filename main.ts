@@ -1,3 +1,26 @@
+/**
+ * Press A+B to change mode.
+ * 
+ * Mode 0 (Default)
+ * 
+ * - Press A to cycle colour.
+ * 
+ * - Press B to cycle brightness.
+ * 
+ * - Clap to toggle on/off.
+ * 
+ * Mode 1 (Light)
+ * 
+ * - Automatically come after light falls below a level.
+ * 
+ * - Press A to reduce light sensitivity.
+ * 
+ * - Press B to increase  light sensitivity.
+ * 
+ * Mode 2 (Sound) - V2 Only
+ * 
+ * - Simple sound to light.
+ */
 input.onButtonPressed(Button.A, function () {
     if (mode == 0) {
         hue += 30
@@ -46,29 +69,6 @@ radio.onReceivedValue(function (name, value) {
         luminosity = value
     }
 })
-/**
- * Press A+B to change mode.
- * 
- * Mode 0 (Default)
- * 
- * - Press A to cycle colour.
- * 
- * - Press B to cycle brightness.
- * 
- * - Clap to toggle on/off.
- * 
- * Mode 1 (Light)
- * 
- * - Automatically come after light falls below a level.
- * 
- * - Press A to reduce light sensitivity.
- * 
- * - Press B to increase  light sensitivity.
- * 
- * Mode 2 (Sound) - V2 Only
- * 
- * - Simple sound to light.
- */
 let state = 0
 let mode = 0
 let luminosity = 0
