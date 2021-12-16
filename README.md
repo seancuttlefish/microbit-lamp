@@ -13,7 +13,7 @@ Mode 0 (Default)
 - Clap to toggle on/off.
 
 Mode 1 (Light)
-- Automatically switch on after light falls below a certain level.
+- Automatically switch on after light falls below a trigger level.
 - Press A to reduce light sensitivity lvel.
 - Press B to increase  light sensitivity level.
 
