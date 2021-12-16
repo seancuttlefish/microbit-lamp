@@ -1,43 +1,91 @@
+/**
+ * Press A+B to change mode.
+ * 
+ * Mode 0 (Default)
+ * 
+ * - Press A to cycle colour.
+ * 
+ * - Press B to cycle brightness.
+ * 
+ * - Clap to toggle on/off.
+ * 
+ * Mode 1 (Light)
+ * 
+ * - Automatically come on after light falls below a trigger level.
+ * 
+ * - Press A to reduce light sensitivity level.
+ * 
+ * - Press B to increase  light sensitivity level.
+ * 
+ * Mode 2 (Sound) - V2 Only
+ * 
+ * - A simple sound to light generator.
+ */
 input.onButtonPressed(Button.A, function () {
-    hue += 30
-    if (hue > 359) {
-        hue = 0
+    if (mode == 0) {
+        hue += 30
+        if (hue > 359) {
+            hue = 0
+        }
+        radio.sendValue("h", hue)
+        toggle = 1
+    } else if (mode == 1) {
+        trigger += -10
+        if (trigger < 0) {
+            trigger = 0
+        }
+        led.plotBarGraph(
+        trigger,
+        255
+        )
     }
-    radio.sendValue("h", hue)
-    updatehsl = 1
 })
 input.onSound(DetectedSound.Loud, function () {
-    if (status == 1) {
-        strip.showColor(neopixel.colors(NeoPixelColors.Black))
-        status = 0
-    } else {
-        updatehsl = 1
-        status = 1
+    if (mode == 0) {
+        if (toggle == 1) {
+            toggle = 0
+        } else {
+            toggle = 1
+        }
+    }
+})
+input.onButtonPressed(Button.AB, function () {
+    mode += 1
+    if (mode > 2) {
+        mode = 0
     }
 })
 input.onButtonPressed(Button.B, function () {
-    luminosity += 10
-    if (luminosity > 49) {
-        luminosity = 0
+    if (mode == 0) {
+        luminosity += 10
+        if (luminosity > 49) {
+            luminosity = 0
+        }
+        radio.sendValue("l", luminosity)
+        toggle = 1
+    } else if (mode == 1) {
+        trigger += 10
+        if (trigger > 255) {
+            trigger = 255
+        }
+        led.plotBarGraph(
+        trigger,
+        255
+        )
     }
-    radio.sendValue("l", luminosity)
-    updatehsl = 1
 })
 radio.onReceivedValue(function (name, value) {
     if (name == "h") {
         hue = value
-        updatehsl = 1
     } else if (name == "s") {
         saturation = value
-        updatehsl = 1
     } else if (name == "l") {
         luminosity = value
-        updatehsl = 1
     }
 })
-let strip: neopixel.Strip = null
-let status = 0
-let updatehsl = 0
+let trigger = 0
+let toggle = 0
+let mode = 0
 let luminosity = 0
 let saturation = 0
 let hue = 0
@@ -45,13 +93,29 @@ radio.setGroup(1)
 hue = 0
 saturation = 99
 luminosity = 50
-updatehsl = 1
-status = 1
-strip = neopixel.create(DigitalPin.P1, 30, NeoPixelMode.RGB)
-basic.showIcon(IconNames.Heart)
+mode = 0
+toggle = 1
+trigger = 100
+let strip = neopixel.create(DigitalPin.P1, 30, NeoPixelMode.RGB)
 basic.forever(function () {
-    if (updatehsl == 1) {
-        strip.showColor(neopixel.hsl(hue, saturation, luminosity))
-        updatehsl = 0
+    if (mode == 0) {
+        if (toggle == 1) {
+            strip.showColor(neopixel.hsl(hue, saturation, luminosity))
+            basic.showIcon(IconNames.Heart)
+        } else {
+            strip.showColor(neopixel.colors(NeoPixelColors.Black))
+            basic.showIcon(IconNames.SmallHeart)
+        }
+    } else if (mode == 1) {
+        if (input.lightLevel() < trigger) {
+            strip.showColor(neopixel.hsl(hue, saturation, luminosity))
+            basic.showIcon(IconNames.Diamond)
+        } else {
+            strip.showColor(neopixel.colors(NeoPixelColors.Black))
+            basic.showIcon(IconNames.SmallDiamond)
+        }
+    } else if (mode == 2) {
+        strip.showBarGraph(input.lightLevel(), 255)
+        basic.showIcon(IconNames.EigthNote)
     }
 })
