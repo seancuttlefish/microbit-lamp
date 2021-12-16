@@ -11,7 +11,7 @@
  * 
  * Mode 1 (Light)
  * 
- * - Automatically come on after light falls below a cirtain level.
+ * - Automatically come on after light falls below a trigger level.
  * 
  * - Press A to reduce light sensitivity level.
  * 
