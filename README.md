@@ -9,4 +9,4 @@ The script also transmits and receives hue, saturation and luminosity values, al
 
 ## Open in MakeCode
 
-Ppen the URL https://github.com/seancuttlefish/microbit-lamp
+Ppen the URL: https://github.com/seancuttlefish/microbit-lamp
