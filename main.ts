@@ -33,6 +33,7 @@ radio.setGroup(1)
 hue = 0
 saturation = 99
 luminosity = 50
+mode = 0
 let strip = neopixel.create(DigitalPin.P1, 30, NeoPixelMode.RGB)
 basic.forever(function () {
     if (mode == 0) {
