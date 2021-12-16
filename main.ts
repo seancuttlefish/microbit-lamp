@@ -10,7 +10,7 @@ input.onButtonPressed(Button.A, function () {
 input.onButtonPressed(Button.B, function () {
     if (mode == 0) {
         luminosity += 10
-        if (luminosity > 49) {
+        if (luminosity > 59) {
             luminosity = 0
         }
         radio.sendValue("l", luminosity)
@@ -32,7 +32,7 @@ let hue = 0
 radio.setGroup(1)
 hue = 0
 saturation = 99
-luminosity = 50
+luminosity = 30
 mode = 0
 let strip = neopixel.create(DigitalPin.P1, 30, NeoPixelMode.RGB)
 basic.forever(function () {
